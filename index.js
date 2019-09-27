@@ -10,8 +10,6 @@ app.use('/', router);
 connectDB();
 
 
-
-
 const port = 5000;
 
 app.listen(port, () => {

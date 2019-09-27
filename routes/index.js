@@ -8,7 +8,7 @@ const shortid = require('shortid');
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/api/strip', async (req, res) => {
 
     const longUrl = req.body.longUrl;
     if (validUrl.isUri(longUrl)) {
@@ -30,6 +30,24 @@ router.post('/', async (req, res) => {
     }
     else
         res.status(401).send('Invalid URL');
+})
+
+router.get('/:code', async (req, res) => {
+
+    try {
+        const shortId = req.params.code;
+        const url = await db.findOne({ shortId: shortId });
+        if (url) {
+            const longUrl = url.longUrl;
+            res.redirect(longUrl);
+        }
+        else {
+            res.send('URL not found').status(404);
+        }
+
+    } catch (err) {
+        console.log(err.message);
+    }
 })
 
 module.exports = router;

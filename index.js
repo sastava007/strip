@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const express = require('express');
 const config = require('config');
 const app = express();
+const router = require('./routes/index');
+const connectDB = require('./config/db');
+
 app.use(express.json());
-
-const connectDB = require('./models/db');
-
+app.use('/', router);
+connectDB();
 
 
 

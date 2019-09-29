@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://sastava007:stripsoftware999%24@strip-pwqe1.gcp.mongodb.net/test?retryWrites=true&w=majority",
-    "baseURL": "http://127.0.0.1:5000"
-}
